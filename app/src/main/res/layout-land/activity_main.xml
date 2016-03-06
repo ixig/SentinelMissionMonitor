@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:background="#404040"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:id="@+id/ic_drawer"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="8dp"
+            android:rotation="180"
+            android:src="@drawable/animated_drawer_to_arrow" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_above="@+id/ic_screen4"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_num5" />
+
+        <ImageView
+            android:id="@+id/ic_screen4"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_above="@+id/ic_screen3"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_num4" />
+
+        <ImageView
+            android:id="@+id/ic_screen3"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_above="@+id/ic_screen2"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_num3" />
+
+        <ImageView
+            android:id="@+id/ic_screen2"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_above="@+id/ic_screen1"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_num2" />
+
+        <ImageView
+            android:id="@+id/ic_screen1"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_above="@+id/ic_startstop"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_num1" />
+
+        <ImageView
+            android:id="@+id/ic_startstop"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:rotation="90"
+            android:src="@drawable/vector_drawable_run" />
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#801010"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp" />
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>
