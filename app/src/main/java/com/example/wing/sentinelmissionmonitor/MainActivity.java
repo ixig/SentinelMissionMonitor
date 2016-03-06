@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
     private ListView mDrawerList;
     private ImageView mDrawerMenuIV;
     private ImageView mDrawerStartStopIV;
-    private ImageView[] mDrawerScreensIV = new ImageView[NUM_SCREENS];
+    private View[] mDrawerScreensV = new View[NUM_SCREENS];
     private DrawerItemCustomAdapter mDrawerAdapter;
 
     @Override
@@ -32,37 +32,7 @@ public class MainActivity extends Activity {
 
         findViews();
 
-        mDrawerMenuIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
-                    mDrawerLayout.closeDrawer(Gravity.LEFT);
-                    mDrawerMenuIV.setImageResource(R.drawable.animated_arrow_to_drawer);
-                    ((Animatable) mDrawerMenuIV.getDrawable()).start();
-                } else {
-                    mDrawerLayout.openDrawer(Gravity.LEFT);
-                    mDrawerMenuIV.setImageResource(R.drawable.animated_drawer_to_arrow);
-                    ((Animatable) mDrawerMenuIV.getDrawable()).start();
-                }
-            }
-        });
-
-        mDrawerStartStopIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //int flag = getWindow().getDecorView().getSystemUiVisibility();
-                //getWindow().getDecorView().setSystemUiVisibility(flag ^ View.SYSTEM_UI_FLAG_FULLSCREEN);
-                if (isRunning) {
-                    mDrawerStartStopIV.setImageResource(R.drawable.animated_stop_to_run);
-                    ((Animatable) mDrawerStartStopIV.getDrawable()).start();
-                    isRunning = false;
-                } else {
-                    mDrawerStartStopIV.setImageResource(R.drawable.animated_run_to_stop);
-                    ((Animatable) mDrawerStartStopIV.getDrawable()).start();
-                    isRunning = true;
-                }
-            }
-        });
+        registerListeners();
 
         ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[3];
         drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_action_copy, "Create");
@@ -107,11 +77,68 @@ public class MainActivity extends Activity {
         mDrawerMenuIV = (ImageView) findViewById(R.id.ic_drawer);
         mDrawerStartStopIV = (ImageView) findViewById(R.id.ic_startstop);
 
-        mDrawerScreensIV[0] = (ImageView) findViewById(R.id.ic_screen1);
-        mDrawerScreensIV[1] = (ImageView) findViewById(R.id.ic_screen2);
-        mDrawerScreensIV[2] = (ImageView) findViewById(R.id.ic_screen3);
-        mDrawerScreensIV[3] = (ImageView) findViewById(R.id.ic_screen4);
-        mDrawerScreensIV[4] = (ImageView) findViewById(R.id.ic_screen5);
+        mDrawerScreensV[0] = findViewById(R.id.ic_screen1);
+        mDrawerScreensV[1] = findViewById(R.id.ic_screen2);
+        mDrawerScreensV[2] = findViewById(R.id.ic_screen3);
+        mDrawerScreensV[3] = findViewById(R.id.ic_screen4);
+        mDrawerScreensV[4] = findViewById(R.id.ic_screen5);
+    }
+
+    private void registerListeners() {
+        for (int i = 0; i < NUM_SCREENS; i++) {
+            final int ii = i;
+            mDrawerScreensV[i].setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    mDrawerScreensV[ii].setAlpha(0.2F);
+                    return true;
+                }
+            });
+        }
+
+//        final GestureDetector gestureDetector = new GestureDetector(new GestureDetector.SimpleOnGestureListener() {
+//            public void onLongPress(MotionEvent e) {
+//
+//            }
+//        });
+//        mDrawerScreensV[0].setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                return gestureDetector.onTouchEvent(event);
+//            }
+//        });
+
+        mDrawerMenuIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+                    mDrawerMenuIV.setImageResource(R.drawable.animated_arrow_to_drawer);
+                    ((Animatable) mDrawerMenuIV.getDrawable()).start();
+                } else {
+                    mDrawerLayout.openDrawer(Gravity.LEFT);
+                    mDrawerMenuIV.setImageResource(R.drawable.animated_drawer_to_arrow);
+                    ((Animatable) mDrawerMenuIV.getDrawable()).start();
+                }
+            }
+        });
+
+        mDrawerStartStopIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //int flag = getWindow().getDecorView().getSystemUiVisibility();
+                //getWindow().getDecorView().setSystemUiVisibility(flag ^ View.SYSTEM_UI_FLAG_FULLSCREEN);
+                if (isRunning) {
+                    mDrawerStartStopIV.setImageResource(R.drawable.animated_stop_to_run);
+                    ((Animatable) mDrawerStartStopIV.getDrawable()).start();
+                    isRunning = false;
+                } else {
+                    mDrawerStartStopIV.setImageResource(R.drawable.animated_run_to_stop);
+                    ((Animatable) mDrawerStartStopIV.getDrawable()).start();
+                    isRunning = true;
+                }
+            }
+        });
     }
 
     // navigation drawer click listener
@@ -124,11 +151,11 @@ public class MainActivity extends Activity {
             switch (position) {
                 case 0:
                     fragment = new CreateFragment();
-                    ((View) mDrawerScreensIV[1]).setAlpha(1);
+                    mDrawerScreensV[1].setAlpha(1.0F);
                     break;
                 case 1:
                     fragment = new ReadFragment();
-                    ((View) mDrawerScreensIV[2]).setAlpha(1);
+                    mDrawerScreensV[2].setAlpha(1.0F);
                     break;
                 case 2:
                     fragment = new HelpFragment();
