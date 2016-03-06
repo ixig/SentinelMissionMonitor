@@ -15,12 +15,14 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
     private static final String LOG_TAG = "~MainActivity";
+    private static final int NUM_SCREENS = 5;
 
     private boolean isRunning = false;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ImageView mDrawerMenuIV;
     private ImageView mDrawerStartStopIV;
+    private ImageView[] mDrawerScreensIV = new ImageView[NUM_SCREENS];
     private DrawerItemCustomAdapter mDrawerAdapter;
 
     @Override
@@ -28,10 +30,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerMenuIV = (ImageView) findViewById(R.id.ic_drawer);
-        mDrawerStartStopIV = (ImageView) findViewById(R.id.ic_startstop);
+        findViews();
 
         mDrawerMenuIV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +101,19 @@ public class MainActivity extends Activity {
         ((Animatable) mDrawerMenuIV.getDrawable()).start();
     }
 
+    private void findViews() {
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerMenuIV = (ImageView) findViewById(R.id.ic_drawer);
+        mDrawerStartStopIV = (ImageView) findViewById(R.id.ic_startstop);
+
+        mDrawerScreensIV[0] = (ImageView) findViewById(R.id.ic_screen1);
+        mDrawerScreensIV[1] = (ImageView) findViewById(R.id.ic_screen2);
+        mDrawerScreensIV[2] = (ImageView) findViewById(R.id.ic_screen3);
+        mDrawerScreensIV[3] = (ImageView) findViewById(R.id.ic_screen4);
+        mDrawerScreensIV[4] = (ImageView) findViewById(R.id.ic_screen5);
+    }
+
     // navigation drawer click listener
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -112,9 +124,11 @@ public class MainActivity extends Activity {
             switch (position) {
                 case 0:
                     fragment = new CreateFragment();
+                    ((View) mDrawerScreensIV[1]).setAlpha(1);
                     break;
                 case 1:
                     fragment = new ReadFragment();
+                    ((View) mDrawerScreensIV[2]).setAlpha(1);
                     break;
                 case 2:
                     fragment = new HelpFragment();

@@ -25,10 +25,12 @@
             android:src="@drawable/animated_drawer_to_arrow" />
 
         <ImageView
+            android:id="@+id/ic_screen5"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_above="@+id/ic_screen4"
             android:layout_marginTop="8dp"
+            android:alpha="0.2"
             android:src="@drawable/ic_num5" />
 
         <ImageView
@@ -37,6 +39,7 @@
             android:layout_height="35dp"
             android:layout_above="@+id/ic_screen3"
             android:layout_marginTop="8dp"
+            android:alpha="0.2"
             android:src="@drawable/ic_num4" />
 
         <ImageView
@@ -45,6 +48,7 @@
             android:layout_height="35dp"
             android:layout_above="@+id/ic_screen2"
             android:layout_marginTop="8dp"
+            android:alpha="0.2"
             android:src="@drawable/ic_num3" />
 
         <ImageView
@@ -53,6 +57,7 @@
             android:layout_height="35dp"
             android:layout_above="@+id/ic_screen1"
             android:layout_marginTop="8dp"
+            android:alpha="0.2"
             android:src="@drawable/ic_num2" />
 
         <ImageView
@@ -61,6 +66,7 @@
             android:layout_height="35dp"
             android:layout_above="@+id/ic_startstop"
             android:layout_marginTop="8dp"
+            android:alpha="1"
             android:src="@drawable/ic_num1" />
 
         <ImageView
