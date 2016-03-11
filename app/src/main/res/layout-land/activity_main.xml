@@ -22,7 +22,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginBottom="8dp"
             android:rotation="180"
-            android:src="@drawable/animated_drawer_to_arrow" />
+            android:src="@drawable/animated_arrow_to_drawer" />
 
         <ImageView
             android:id="@+id/ic_screen5"
