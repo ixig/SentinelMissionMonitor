@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#404040"
@@ -23,7 +25,7 @@
             android:layout_marginRight="8dp"
             android:contentDescription="@string/main_menu"
             android:rotation="180"
-            android:src="@drawable/animated_arrow_to_drawer" />
+            android:src="@drawable/vector_drawable_drawer" />
 
         <ImageView
             android:id="@+id/ic_screen5"
@@ -75,7 +77,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="10dp"
             android:contentDescription="@string/start_stop"
             android:rotation="90"
             android:src="@drawable/vector_drawable_run" />
@@ -96,10 +98,12 @@
             android:id="@+id/left_drawer"
             android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
+            android:layout_gravity="left"
             android:background="#801010"
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp" />
+
     </android.support.v4.widget.DrawerLayout>
+
 </LinearLayout>
