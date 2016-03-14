@@ -2,4 +2,5 @@
 <resources>
     <string name="main_menu">Main Menu</string>
     <string name="start_stop">Start/Stop</string>
+    <string name="karma_logo">Karma Logo</string>
 </resources>
